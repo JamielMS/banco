@@ -50,15 +50,4 @@ exports.findById = catchAsync(
   }
 );
 
-exports.delete = catchAsync(async (req, res) => {
-  const user = req.user;
 
-  await user.update({
-    status: 'disabled',
-  });
-
-  return res.status(200).json({
-    status: 'success',
-    message: 'User has been disabled',
-  });
-});

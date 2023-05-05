@@ -87,28 +87,4 @@ exports.handleFindByIdErrors = catchAsync(
   }
 );
 
-exports.handleDeleteErrors = catchAsync(
-  async (req, res, next) => {
-    const { id } = req.params;
 
-    const user = await User.findOne({
-      where: { id },
-    });
-
-    if (!user) {
-      return next(
-        new AppError('User not found', 404)
-      );
-    }
-
-    if (user.status === 'disabled') {
-      return next(
-        new AppError('User already disabled', 400)
-      );
-    }
-
-    req.user = user;
-
-    next();
-  }
-);

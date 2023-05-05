@@ -5,7 +5,6 @@ const usersController = require('../controllers/user.controller');
 const {
   handleLoginErrors,
   handleFindByIdErrors,
-  handleDeleteErrors,
 } = require('../middlewares/user.middleware');
 
 const {
@@ -31,10 +30,6 @@ router.get(
   handleFindByIdErrors,
   usersController.findById
 );
-router.delete(
-  '/:id',
-  handleDeleteErrors,
-  usersController.delete
-);
+
 
 module.exports = router;
